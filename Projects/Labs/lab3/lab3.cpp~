@@ -1,0 +1,58 @@
+//Title: Lab 3
+//Author: Mitchell Angelos
+//Lab section: 23
+//Description: This is a lab practicing arrays, functions, and logic
+
+
+#include <iostream>
+using namespace std;
+
+void displayNumbers(int arr[], int maxTo);
+int makePositive(int array[], int numValues);
+
+int main () {
+
+  const char ogArrayMessage[] = {"Original array: "};
+  const char modifiedArray[] = {"Modified array: "};
+  const char enterNumber[] = {"Enter a number (0 when done): "};
+  const int ENDING_NUMBER = 0; //ends the loop for getting numbers from the user
+  const int MAX_SIZE = 100;
+  int theArray[MAX_SIZE] = {};
+  int currentSize = 0;
+
+  int temp = -1;
+  while(temp != ENDING_NUMBER){
+    cout << enterNumber;
+    cin >> temp;
+    if(temp != 0){
+      theArray[currentSize] = temp;
+      currentSize++;
+    }
+  }
+  
+  cout << ogArrayMessage;
+  displayNumbers(theArray, currentSize);
+  cout << "The array contains " << makePositive(theArray, currentSize)
+       << " negative numbers." << endl;
+  cout << modifiedArray;
+  displayNumbers(theArray, currentSize);
+  return 0;
+}
+
+void displayNumbers(int arr[], int maxTo){
+  for(int i = 0; i < maxTo; i++){
+    cout << arr[i] << " ";
+  }
+  cout << endl;
+}
+
+int makePositive(int array[], int numValues){
+  int negativeCount = 0;
+  for(int i = 0; i < numValues; i++){
+    if(array[i] < 0){
+      negativeCount++;
+      array[i] *= -1;
+    }
+  }
+  return negativeCount;
+}

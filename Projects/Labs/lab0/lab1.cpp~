@@ -1,0 +1,112 @@
+/* File: lab1.cpp
+** Author: Mitchell Angelos
+** Date: 8/30/19
+** 
+**
+**
+*/
+
+#include <iostream>
+using namespace std;
+
+int main() {
+  
+  int age;
+  char firstName[80];
+  char lastName[80];
+
+  cout << "Please enter your age: " << endl;
+  cin >> age;
+  // error checking, if input != integer
+  while (cin.fail()) {
+    cout << "Please enter your age as an integer: " << endl;
+    cin.clear();
+    cin.ignore(256, '\n');
+    cin >> age;
+  }
+  // allows user to input something next
+  if (cin.peek() == '\n') {
+    cin.ignore();
+  }
+  cout << "Enter your first name: " << endl;
+  cin.getline(firstName, 80);
+  cout << "Enter your last name: " << endl;
+  cin.getline(lastName, 80);
+  cout << "Your age is: " << age << endl;
+  cout << "Your first name is: " << firstName << endl;
+  cout << "Your last name is: " << lastName << endl << endl;
+
+  // grading
+  cout << "Let's begin grading." << endl << endl;
+  
+  int gradeOne = -1;
+  int gradeTwo = -1;
+  int gradeThree = -1;
+  int attemptTimes = 0;
+  int validRecords = 0;
+
+  //grade one
+  while (gradeOne < 0 || gradeOne > 100) {
+    cout << "Enter the first grade (0 to 100): " << endl;
+    cin >> gradeOne;
+    while (cin.fail()) {
+      cout << "Enter the first grade as an integer (0 to 100): " << endl;
+      cin.clear();
+      cin.ignore(256, '\n');
+      cin >> gradeOne;
+    }
+  }
+  cout << "The first grade is now valid." << endl;
+  attemptTimes += 1;
+  validRecords += 1;
+  cout << "The total attempt times are: " << attemptTimes << endl;
+  cout << "The valid records number is: " << validRecords << endl << endl;
+  if (cin.peek() == '\n') {
+    cin.ignore();
+  }
+
+  //grade two
+  while (gradeTwo < 0 || gradeTwo > 100) {
+    cout << "Enter the second grade (0 to 100): " << endl;
+    cin >> gradeTwo;
+    while (cin.fail()) {
+      cout << "Enter the second grade as an integer (0 to 100): " << endl;
+      cin.clear();
+      cin.ignore(256, '\n');
+      cin >> gradeTwo;
+    }
+  }
+  cout << "Now the second grade is valid." << endl;
+  attemptTimes += 1;
+  validRecords += 1;
+  cout << "The total attempt times are: " << attemptTimes << endl;
+  cout << "The valid records number is: " << validRecords << endl << endl;
+  
+  if (cin.peek() == '\n') {
+    cin.ignore();
+  }
+
+  //grade three
+  while (gradeThree < 0 || gradeThree > 100) {
+    cout << "Enter the second grade (0 to 100): " << endl;
+    cin >> gradeThree;
+    while (cin.fail()) {
+      cout << "Enter the third grade as an integer (0 to 100): " << endl;
+      cin.clear();
+      cin.ignore(256, '\n');
+      cin >> gradeThree;
+    }
+  }
+  cout << "Now the third grade is valid." << endl;
+  attemptTimes += 1;
+  validRecords += 1;
+  cout << "The total attempt times are: " << attemptTimes << endl;
+  cout << "The valid records number is: " << validRecords << endl << endl;
+  
+  // calculate average
+  cout << firstName << " " << lastName << " you average is: " << endl;
+  float avg = (gradeOne + gradeTwo + gradeThree) / 3.0;
+  cout << avg << endl;
+  
+  return 0;
+}
